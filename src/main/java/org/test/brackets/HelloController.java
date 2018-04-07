@@ -22,12 +22,6 @@ public class HelloController {
 		return "welcome";
 	}
     
-    @RequestMapping("/home")
-    public ModelMap home(Map<String, Object> model) {
-    	System.out.println("HOME");
-		model.put("message", "AM I AT HOME");
-		return (ModelMap) model;
-	}
 
     @RequestMapping("/secondPage")
     public String second(Map<String, Object> model) {
