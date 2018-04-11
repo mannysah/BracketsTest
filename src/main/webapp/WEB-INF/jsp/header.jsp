@@ -10,33 +10,130 @@
   <link rel="stylesheet" href="../css/styles.css">
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  
   <script>
+  
+  
   $( function() {
 	  alert('hello');
+	  callAjax("/home");
+	  
 	    $( "#tabs" ).tabs({
  	    	activate: function (event, ui) {
 	            var active = $('#tabs').tabs('option', 'active');
 	            $("#tabid").html('the tab id is ' + $("#tabs ul>li a").eq(active).attr("href"));
 	            console.info('YYYYY');
 	            console.info(active);
+	            console.info('HELLO COMPARISON'+ active==0);
+
+	            if(active==0){
+		            	console.log('Home tab is selected');
+		            	callAjax("/home");
+		            	console.log('completed Ajax');
+	            }
 	            
-	            var jsonObject = 
-	            	{
-	            	"id": "1",
-	            	"value": "2"
-	            	};
-	            $.ajax({
-	            	  type: "POST",
-	            	  url: "/home",
-	            	  data: "test",
-	            	  success: alert('hel'),
-	            	  dataType: "json"
-	            	});
- 	    	}
+	            if(active==1){
+		            	console.log('Team Tab is selected');
+		            	callAjax("/teams");
+		            	console.log('completed Ajax');
+		            	
+	            }
+ 	    		}
 	    });	  
   });
 		   
   </script>
+  
+<!--  AJAX FUNCTION -->
+<script>
+function callAjax(controllerName, callback)
+{
+	console.log(callback);
+    $.ajax({
+  	  type: "GET",
+  	  url: controllerName,
+  	  success: function(data){
+  		  console.log('successful call');
+  		  //jsonData = $.parseJSON(data);
+  		  
+  		  if(controllerName=="/home")
+  		  {
+  			  homeCallBack(data);
+  		  }
+  		  else if(controllerName=="/teams")
+  		  {
+  			  teamCallBack(data);
+  		  }
+  	  },
+  	  error: console.log('error'),
+  	  dataType: "json"
+  	});	
+
+
+    return;
+}
+
+function homeCallBack(jsonData)
+{
+	console.log('inside homeCallBack11');
+	console.log(jsonData);
+	
+	console.log($('#homeTable'));
+	
+	var tableBody = "";
+	$.each(jsonData, function(i, item) {
+		console.log(i);
+		console.log(item);
+		row = "<tr> <td>" + item.id + "</td><td>" + item.content + "</td></tr>";
+
+		tableBody = tableBody + row;        
+    });
+
+	
+	console.log(tableBody);
+	$("#homeTable tbody").html(tableBody);
+}
+
+function teamCallBack(jsonData)
+{
+	console.log('inside teamCallBack11');
+	console.log(jsonData);
+	
+	console.log($('#teamTable'));
+	
+	var tableBody = "";
+	$.each(jsonData, function(i, item) {
+		console.log(i);
+		console.log(item);
+		row = "<tr> <td>" + item.teamId + "</td><td>" + item.teamName + "</td></tr>";
+
+		tableBody = tableBody + row;        
+    });
+
+	
+	console.log(tableBody);
+	$("#teamTable tbody").html(tableBody);
+}
+</script>
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 
 <style>
 #ts_tabmenu {
