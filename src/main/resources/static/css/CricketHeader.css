@@ -1,0 +1,146 @@
+<style>
+.cssheader {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 15px;
+    } 
+.cssfooter {
+    background-color: #F2F2F2;
+    text-align: center;
+    padding: -10px;
+    } 
+.csstopnav {
+    overflow: hidden;
+    background-color: #333;	
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: Left;
+    text-decoration: none;
+    margin-right: 25px;
+    margin-left: 126px;
+	}
+.csstopnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.cssnavigation {
+background-color: Black;
+}
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;	
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: Center;
+    text-decoration: none;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 0;
+    overflow: hidden;
+    width: 68%;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+    #ts_tabmenu {
+    font-size: .75em;
+    padding: 20px 0px 0px 20px;
+}
+#ts_tabmenu ul
+{
+    line-height: 1em;
+    margin: 0px;
+    list-style-type: none;
+    float: left;
+    padding: 0px 0px 0px 5px;
+}
+#ts_tabmenu ul li
+{
+    float: left;
+}
+#ts_tabmenu ul li a
+{
+    text-decoration: none;
+    display: block;
+    float: left;
+    padding: 0px 0px 0px 10px;
+    background: url(tabs.gif) no-repeat left top;
+    margin-left: -5px;
+    z-index: 0;
+    position: relative;
+    color: #666666;
+}
+#ts_tabmenu ul li a strong
+{
+    font-weight: normal; /* remove the bold effect */
+    display: block;
+    background: url(tabs.gif) no-repeat right top;
+    padding: 6px 10px 7px 5px;
+    cursor: pointer;
+}
+#ts_tabmenu ul li a:hover
+{
+    position: relative;
+    z-index: 5;
+    background: url(tabs.gif) no-repeat left bottom;
+    color: #000000;
+}
+#ts_tabmenu ul li a:hover strong
+{
+    background-image: url(tabs.gif) no-repeat;
+    position: relative;
+    z-index: 5;
+    background-position: right bottom;
+}
+
+.sidecolumn {
+border: 5px solid red;
+    float: left;
+    width: 22%;
+    padding: 10px;
+    height: 700px; /* Should be removed. Only for demonstration */
+        min-width: 300px; /* 100px x3 = 300 */
+    overflow:scroll;
+    
+}
+
+.maincolumn {
+    float: left;
+    width: 56%;
+    padding: 10px;
+    height: 700px; /* Should be removed. Only for demonstration */
+        min-width: 300px; /* 100px x3 = 300 */
+    overflow:scroll;
+    
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+</style>
